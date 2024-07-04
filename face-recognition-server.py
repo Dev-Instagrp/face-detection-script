@@ -3,7 +3,7 @@ import asyncio
 import websockets
 import json, io
 
-picture_of_me = face_recognition.load_image_file("me.jpeg")
+picture_of_me = face_recognition.load_image_file("real-me.jpg")
 my_face_encoding = face_recognition.face_encodings(picture_of_me)[0]
 
 async def websocket_handler(websocket, path):
@@ -34,6 +34,6 @@ def recognize_face(message):
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     loop.run_until_complete(
-        websockets.serve(websocket_handler, "0.0.0.0", 8765)
+        websockets.serve(websocket_handler, "192.168.1.32", 8765)
     )
     loop.run_forever()

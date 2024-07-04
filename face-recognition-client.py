@@ -15,7 +15,7 @@ def compress_image(image_path, quality=85):
 async def recognize_face():
     uri = "ws://localhost:8765"
     async with websockets.connect(uri) as websocket:
-        compressed_image_bytes = compress_image("unknown.jpeg")
+        compressed_image_bytes = compress_image("me-2.png")
         await websocket.send(compressed_image_bytes)
         response = await websocket.recv()
         return json.loads(response)
